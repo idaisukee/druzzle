@@ -13,16 +13,14 @@ $client = new Client([
 	//	'timeout'  => 2.0,
 ]);
 
-$metadata = '{"name": "myfileyeah"}';
+$filename = $argv[1];
+$parent = $argv[2];
+$metadata = '{"name": "'.$filename.'", "parents": ["'.$parent.'"]}';
 
-$body = 'おおおおおお';
-$length = strlen($metadata) + strlen($body);
+$body = fopen($filename, 'r');
 $response = $client->request('POST', '', [
 	'headers' => [
 		'Authorization' => 'Bearer '.$bearer,
-		//		'Content-Length' => strlen($body),
-		//		'Content-Type' => 'multipart/related',
-		//		'Content-Length' => $length,
 	],
 	'multipart' => [
 		[
@@ -36,7 +34,7 @@ $response = $client->request('POST', '', [
 			'name' => 'body',
 			'contents' => $body,
 			'headers' => [
-				//				'Content-Type' => 'text/plain',
+				'Content-Type' => 'text/plain',
 			]
 		],
 	]
