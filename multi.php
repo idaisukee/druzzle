@@ -14,8 +14,9 @@ $client = new Client([
 ]);
 
 $filename = $argv[1];
+$basename = basename($filename);
 $parent = $argv[2];
-$metadata = '{"name": "'.$filename.'", "parents": ["'.$parent.'"]}';
+$metadata = '{"name": "'.$basename.'", "parents": ["'.$parent.'"]}';
 
 $body = fopen($filename, 'r');
 $response = $client->request('POST', '', [
