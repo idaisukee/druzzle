@@ -21,8 +21,5 @@ $response = $client->request('GET', 'files', [
 	'headers' => [
 		'Authorization' => 'Bearer '.$bearer,
 	],
-	// 'query' => [
-	// 	'q' => 'name contains',
-	// ],
 ]);
 echo $response->getBody();
