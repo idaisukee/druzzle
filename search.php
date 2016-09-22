@@ -14,10 +14,9 @@ $client = new Client([
 ]);
 
 $q = rtrim(fgets(STDIN));
-//$str = "files?q=name contains '{$q}'";
 $response = $client->request('GET', 'files', [
 	'query' => [
-		'q' => 'name contains aaaa',
+		'q' => 'name contains \''.$q.'\'',
 	],
 	'headers' => [
 		'Authorization' => 'Bearer '.$bearer,
